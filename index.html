@@ -23,41 +23,25 @@
       height: 100vh;
     }
 
-    body {
-      -webkit-animation: colorchange 60s infinite;
-      animation: colorchange 60s infinite;
-      background: -webkit-linear-gradient(#93B874, #C9DCB9);
-      background: -o-linear-gradient(#93B874, #C9DCB9);
-      background: -moz-linear-gradient(#93B874, #C9DCB9);
-      background: linear-gradient(#93B874, #C9DCB9);
-      background-color: #93B874;
-    }
-
-    @-webkit-keyframes colorchange {
-     0%  {background: #33FFF3;}
-    25%  {background: #78281F;}
-    50%  {background: #117A65;}
-    75%  {background: #DC7633;}
-    100% {background: #9B59B6;}
-}
-    @keyframes colorchange {
-     0%  {background: #33FFF3;}
-    25%  {background: #78281F;}
-    50%  {background: #117A65;}
-    75%  {background: #DC7633;}
-    100% {background: #9B59B6;}
-}
-
     h1 {
       position: absolute;
       width: 100%;
       top: 50%;
       font-family: "DotGothic16";
-      color: white;
+      color: whitesmoke;
       font-size: 12vw;
       text-align: center;
       transform: translateY(-50%);
     }
+
+    .day {
+      background: rgb(99, 173, 208);
+    }
+
+    .night {
+      background: black;
+    }
+
   </style>
 </head>
 
@@ -88,6 +72,15 @@
       var time = hours + ":" + min + ":" + sec;
 
       document.getElementById("time").innerHTML = time;
+
+
+      /* Para ficar escuro depois das 19:00 e claro a partir das 06:00*/
+      if(hours >= 19) {
+        document.querySelector("body").classList.add('night');
+      } else {
+        document.querySelector("body").classList.add('day');
+      }
+
     };
 
     setInterval(function () {
