@@ -75,9 +75,10 @@
 
 
       /* Para ficar escuro depois das 19:00 e claro a partir das 06:00*/
-      if(hours >= 19) {
+      if(hours >= 18 || hours <6) {
         document.querySelector("body").classList.add('night');
-      } else {
+      } 
+      if(hours >= 6 || hours <18) {
         document.querySelector("body").classList.add('day');
       }
 
@@ -85,7 +86,7 @@
 
     setInterval(function () {
       clock();
-    }, 1000);
+    }, 0.1);
   </script>
 </body>
 
