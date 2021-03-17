@@ -2,13 +2,14 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width-device-width, initial-scale-1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie-edge" />
     <link
       href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap"
       rel="stylesheet"
     />
     <title>Relógio Digital</title>
+
     <style>
       *,
       *:before,
@@ -46,19 +47,39 @@
       .loaded {
         transition: background-color 0.5s;
       }
+
+      .sun {
+        width: auto;
+        height: 80vh;
+      }
+
+      body.night .sun {
+        display: none;
+      }
+
+      .moon {
+        width: auto;
+        height: 80vh;
+      }
+
+      body.day .moon {
+        display: none;
+      }
     </style>
   </head>
 
   <body onload="startTime()">
+    <img src="sun.svg" class="sun" />
+    <img src="moon.svg" class="moon" />
     <section>
       <h1 class="title" id="time"></h1>
     </section>
-
     <script type="text/javascript">
       var body = document.querySelector("body");
 
       var setClass = function () {
-        var hoursStart = new Date().getHours();
+        var hoursStart = new Date().getSeconds() % 10;
+
         if (hoursStart >= 18 || hoursStart < 6) {
           body.classList.remove("day");
           body.classList.add("night");
